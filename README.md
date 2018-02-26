@@ -7,7 +7,7 @@ I have learnt **network protocol hierarchy** as well as **flow control and error
 
 **Assignment 1** : Implemented a ``sliding window protocol`` in a simulated communication network system.
 
-**Assignment 2** : Implemented an "online fruit shop" website that utilizes web client-side programming techniques and web server-side programming techniques
+**Assignment 2** : Implemented an "online fruit shop" website that utilizes ``Web client-side programming`` techniques and ``Web server-side programming techniques``.
 
 
 ## Knowledge Accquired includes: 

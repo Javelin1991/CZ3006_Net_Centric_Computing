@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="vendors/css/grid.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+        <title>Online Fruit Shop</title>
+        
+    </head>
+    <body>
+        <header>
+            <div class="main-title-text-box"> 
+                <h1>BoA: Online Fruit Shop</h1>
+                <br>
+                <br>
+                <h2>Keep calm and eat healthy</h2>
+            </div>
+            
+        </header>
+        
+        <section class="greeting-message" id="features">
+            <div class="row">
+                <h2>Welcome to Our Online Fruit Shop</h2>
+                <p class="long-copy">
+                    Hi there! Would you like to order some fruits? We have the best apples, oranges and bananas in town!
+                </p>
+            </div>
+         
+        </section>
+        
+        <section class="section-order-form" id="orderForm">
+                <div class="row">
+                    <h2>Fruit Order Form</h2>
+                </div>
+                
+            
+                <div class="row">
+                    <form method="post" action="receipt.php" class="order-form">
+                        
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label for="name">Customer</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="text" name="customer" id="customer" placeholder="Name" required>
+                        </div>
+                    </div>
+                        
+             
+                    <div class = "apple-row">
+                            <div class="col span-1-of-3">
+                                <label>Apple Price &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp; :</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <label>69 cents each</label>
+                            </div>
+                        
+                            <div class="row"> 
+                            <div class="col span-1-of-3">
+                                 <label>Order Apple</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <input type="text" name="numberOfApple" id="numberOfApple" placeholder="Enter quantity here" onchange = "checkValidInput(); updateTotalCost();" >
+                            </div>
+                        </div>
+                    </div>
+         
+                        
+                    <br>
+                        
+                    <div class = "orange-row">
+                            <div class="col span-1-of-3">
+                                <label>Orange Price &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; :</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <label>59 cents each</label>
+                            </div>
+                        
+                            <div class="row"> 
+                            <div class="col span-1-of-3">
+                                 <label>Order Orange</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <input type="text" name="numberOfOrange" id="numberOfOrange" placeholder="Enter quantity here" onchange="checkValidInput(); updateTotalCost();">
+                            </div>
+                                
+                        </div>
+                    </div>
+                        
+                    <br>
+                        
+                     <div class = "banana-row">
+                            <div class="col span-1-of-3">
+                                <label>Banana Price &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; :</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <label>39 cents each</label>
+                            </div>
+                        
+                            <div class="row"> 
+                            <div class="col span-1-of-3">
+                                 <label>Order Banana</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                <input type="text" name="numberOfBanana" id="numberOfBanana" placeholder="Enter quantity here" onchange="checkValidInput(); updateTotalCost();">
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class = "total-cost">
+                            <div class="col span-1-of-3">
+                                <label>Total Cost in dollar</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                              
+                                <input type="text" name="totalCost" id="totalCost" placeholder="Total cost" onfocus="this.blur()">
+                        </div>
+                    </div>
+                    
+                     <div class = "payment-method">
+                            <div class="col span-1-of-3">
+                                <label>Payment method</label>
+                            </div>
+                            <div class="col span-2-of-3">
+                                    <input type="radio" name="paymentMode"  value="Visa" checked="checked" />
+                                    &emsp;Visa
+                                    <br />
+                                    <input type="radio" name="paymentMode" value="MasterCard" />
+                                    &emsp;MasterCard
+                                    <br />
+                                    <input type="radio" name="paymentMode"  value="Discover" />
+                                    &emsp;Discover
+                                    <br />
+                        </div>
+                    </div>
+                    
+                    <br>
+                    <br>
+                    <br>
+                        
+                    <div class="row">
+                        <div class="col">
+                            <input type="reset" value="Reset">
+                        </div>
+                      
+                        <div class="col">
+                            <input type="submit" value="Submit" onclick="return verifyBeforeSubmission();">
+                        </div>
+                    </div>    
+                        
+                </form>
+            </div>
+        </section>
+        <footer>
+            <div class="row">
+                <p>
+                    Copyright &copy; 2017 by Htet Naing. &nbsp; All rights reserved. This is created for CZ3006 Assignment 2, Computer Science, NTU.
+                </p>
+            </div>
+        </footer>
+    
+        
+<!-- Javascripts -->
+
+        <script type="text/javascript">
+
+            //the method below checks if the input is valid (i.e. it contains only digits), if invalid, it sets total cost to NaN 
+            function checkValidInput(){
+                var numberOfApple = document.getElementById("numberOfApple").value;
+                var numberOfOrange = document.getElementById("numberOfOrange").value;
+                var numberOfBanana = document.getElementById("numberOfBanana").value;
+                var totalCost = document.getElementById("totalCost");
+
+                //checking if the input to order apple is valid (i.e. only contain digits)
+                if(numberOfApple.match(/^[0-9]+$/) == null && numberOfApple != ""){
+                    alert("Invalid input at Order Apple. Please provide a valid integer.");
+                    totalCost.value = NaN;
+                    document.getElementById("numberOfApple").focus();
+                    document.getElementById("numberOfApple").select();
+
+                //checking if the input to order orange is valid (i.e. only contain digits)
+                }else if(numberOfOrange.match(/^[0-9]+$/) == null && numberOfOrange != ""){
+                    alert("Invalid input at Order Orange. Please provide a valid integer.");
+                    totalCost.value = NaN;
+                    document.getElementById("numberOfOrange").focus();
+                    document.getElementById("numberOfOrange").select();
+
+                //checking if the input to order banana is valid (i.e. only contain digits)
+                }else if(numberOfBanana.match(/^[0-9]+$/) == null && numberOfBanana != ""){
+                    alert("Invalid input at Order Banana. Please provide a valid integer.");
+                    totalCost.value = NaN;          
+                    document.getElementById("numberOfBanana").focus();
+                    document.getElementById("numberOfBanana").select();
+                }else{
+                    //calculate the total cost if all inputs are valid
+                    return true;
+                }
+
+                return false; 
+            }
+
+            //the method below calculate the total cost dynamically whenever any of the input changes
+            function updateTotalCost(){
+
+                    var numberOfApple = document.getElementById("numberOfApple").value;
+                    var numberOfOrange = document.getElementById("numberOfOrange").value;
+                    var numberOfBanana = document.getElementById("numberOfBanana").value;
+                    var totalCost = document.getElementById("totalCost");
+
+                    var appleCost = 0; 
+                    var orangeCost = 0; 
+                    var bananaCost = 0; 
+
+                    appleCost = 0.69 * numberOfApple;
+                    orangeCost = 0.59 * numberOfOrange;
+                    bananaCost = 0.39 * numberOfBanana;
+
+                    var totalSum = appleCost + orangeCost + bananaCost;
+                    totalCost.value = totalSum.toFixed(2);   
+            }
+
+            function verifyBeforeSubmission(){
+               return(checkValidInput() && checkValidOrder())
+            }
+
+            //the method below checks if a user is trying to submit the form without any fruit order
+            function checkValidOrder(){
+                
+                var totalCost = document.getElementById("totalCost").value;
+                if (totalCost == ""){
+                    alert("Please order at least one fruit.");
+                    return false; 
+                }else if(totalCost == NaN){
+                    alert("Please enter valid entries (i.e. only integer) in order form.")
+                    return false;
+                }
+                return true; 
+            }
+        </script>
+    
+    </body>  
+    
+</html>
